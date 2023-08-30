@@ -1129,13 +1129,13 @@ fieldset[disabled] .button.is-primary.is-inverted.is-outlined {
 }
 
 .button.is-link {
-  background-color: #485fc7;
+  background-color: #7909ce;
   border-color: transparent;
   color: #fff;
 }
 
 .button.is-link:hover, .button.is-link.is-hovered {
-  background-color: #3e56c4;
+  background-color: #7909ce;
   border-color: transparent;
   color: #fff;
 }
@@ -1150,7 +1150,7 @@ fieldset[disabled] .button.is-primary.is-inverted.is-outlined {
 }
 
 .button.is-link:active, .button.is-link.is-active {
-  background-color: #3a51bb;
+  background-color: #7909ce;
   border-color: transparent;
   color: #fff;
 }
