@@ -32,7 +32,12 @@ class Product(models.Model):
     )
     name = models.CharField('Название', max_length=255)
     slug = models.SlugField('Слаг', max_length=255)
-    image = models.ImageField('Картинка', upload_to='products/%Y/%m/%d')
+    image = models.ImageField(
+        'Картинка',
+        upload_to='products/%Y/%m/%d',
+        null=True,
+        blank=True
+    )
     description = models.TextField('Описание')
     price = models.DecimalField('Цена', max_digits=10, decimal_places=2)
     available = models.BooleanField('Наличие', default=True)
