@@ -58,6 +58,6 @@
   <p class="text-right">
     <a href="{% url "shop:product_list" %}" class="button
     light">Продолжить покупку</a>
-    <a href="#" class="button is-link">Проверить</a>
+    <a href="{% url 'orders:order_create' %}" class="button is-link">Касса</a>
   </p>
 {% endblock %}
