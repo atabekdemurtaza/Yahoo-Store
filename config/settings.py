@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'shop',
     'cart',
     'orders',
+    'payment',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +124,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CART_SESSION_ID = 'cart'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51NmA3xEOC92BKaf78uXAfKHTYaYTgQIEC24ZNeKaBstpUf9eDmJwVKFtHsiCCQRgTUn6evnheMLDBGGHmFaw4ioi00ZXlfRrTt' 
+STRIPE_SECRET_KEY = 'sk_test_51NmA3xEOC92BKaf7aqL686SHpy3xUCvKEiiGyqyhk9qVB4ssV1WFmtZHXW5UyALGUDmSLp60iYyW0nEZtLQ3QfJf00Cznkyf5Y'
+STRIPE_API_VERSION = '2022-08-01'

@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import OrderCreateForm
 from .models import OrderItem
 from cart.cart import Cart
 from .tasks import order_created
+from django.urls import reverse
 
 
 def order_create(request):
@@ -22,7 +23,8 @@ def order_create(request):
             cart.clear()
             # Запускаем асинхронное задание
             order_created.delay(order.id)
-            template_name = 'orders/order/created.html'
+
+            """template_name = 'orders/order/created.html'
             context = {
                 'order': order
             }
@@ -30,7 +32,10 @@ def order_create(request):
                 request,
                 template_name,
                 context
-            )
+            )"""
+            request.session['order.id'] = order.id
+            # Перенавправляем к платежу
+            return redirect(reverse('payment:process'))
     else:
         form = OrderCreateForm()
 
