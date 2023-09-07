@@ -23,9 +23,8 @@ def payment_process(request):
         # Получаем данные из сеанса платежа Stripe
         session_data = {
             'mode': 'payment',
-            'client_reference_id': order.id,
             'success_url': success_url,
-            'canceled_url': cancel_url,
+            'cancel_url': cancel_url,
             'line_items': []
         }
 

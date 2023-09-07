@@ -33,7 +33,7 @@ def order_create(request):
                 template_name,
                 context
             )"""
-            request.session['order.id'] = order.id
+            request.session['order_id'] = order.id
             # Перенавправляем к платежу
             return redirect(reverse('payment:process'))
     else:

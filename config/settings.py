@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'cart',
     'orders',
     'payment',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -68,10 +69,21 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
+"""DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}"""
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'cart',
+        'USER': 'testuser',
+        'PASSWORD': '123456',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -128,3 +140,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 STRIPE_PUBLISHABLE_KEY = 'pk_test_51NmA3xEOC92BKaf78uXAfKHTYaYTgQIEC24ZNeKaBstpUf9eDmJwVKFtHsiCCQRgTUn6evnheMLDBGGHmFaw4ioi00ZXlfRrTt' 
 STRIPE_SECRET_KEY = 'sk_test_51NmA3xEOC92BKaf7aqL686SHpy3xUCvKEiiGyqyhk9qVB4ssV1WFmtZHXW5UyALGUDmSLp60iYyW0nEZtLQ3QfJf00Cznkyf5Y'
 STRIPE_API_VERSION = '2022-08-01'
+
+STRIPE_WEBHOOK_SECRET = 'whsec_ccde6555031bcbac9764126d65d9fc87ee4de9f821ab0f8db97880b10a359e0a'
