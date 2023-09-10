@@ -101,3 +101,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 Feel free to adapt and extend this template to suit your Django-based Yahoo Store project's specific needs. Include any additional sections or information that would be helpful for users and contributors.
+
+--- 
+
+## Homepage
+
+![Main Page](main.png)
