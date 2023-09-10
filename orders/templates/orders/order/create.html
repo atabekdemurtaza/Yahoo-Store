@@ -17,9 +17,17 @@
         </li>
       {% endfor %}
     </ul>
+    {% if cart.coupon %}
+      <li>
+        "{{ cart.coupon.code }}" ({{ cart.coupon.discount }} из)
+        <span class="neg">
+          - $ {{ cart.get_discount|floatformat:2 }}
+        </span>
+      </li>
+    {% endif %}
     </br>
     </br>
-    <p>Итого: ${{ cart.get_total_price }}</p>
+    <p>Итого: ${{ cart.get_total_price_after_discount|floatformat:2 }}</p>
   </div>
   <form method="post" class="order-form">
     {{ form.as_p }}
