@@ -42,9 +42,9 @@ Explain how to get started with your project using Django. This section should g
 List any software, tools, or dependencies that users need to have installed before they can use your project:
 
 - Python (version 3.11.2)
-- Django (version X.X.X)
+- Django (version 4.1.10)
 - Virtual environment (optional but recommended)
-- Database (e.g., PostgreSQL, MySQL, SQLite)
+- Database (e.g., PostgreSQL, SQLite)
 - Git
 
 ### Installation

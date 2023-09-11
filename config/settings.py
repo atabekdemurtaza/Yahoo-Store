@@ -1,20 +1,28 @@
 from pathlib import Path
+import environ
+
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Take environment variables from .env file
+environ.Env.read_env(BASE_DIR / '.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-$rxz#u4$!3_w!c)iy=#t2lgaglk!a4ny%8117%1ab#%ogylx#3'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -70,21 +78,14 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-"""DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}"""
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cart',
-        'USER': 'testuser',
-        'PASSWORD': '123456',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
     }
 }
 
@@ -134,12 +135,12 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CART_SESSION_ID = 'cart'
+CART_SESSION_ID = env('CART_SESSION_ID')
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-STRIPE_PUBLISHABLE_KEY = 'pk_test_51NmA3xEOC92BKaf78uXAfKHTYaYTgQIEC24ZNeKaBstpUf9eDmJwVKFtHsiCCQRgTUn6evnheMLDBGGHmFaw4ioi00ZXlfRrTt' 
-STRIPE_SECRET_KEY = 'sk_test_51NmA3xEOC92BKaf7aqL686SHpy3xUCvKEiiGyqyhk9qVB4ssV1WFmtZHXW5UyALGUDmSLp60iYyW0nEZtLQ3QfJf00Cznkyf5Y'
-STRIPE_API_VERSION = '2022-08-01'
+STRIPE_PUBLISHABLE_KEY = env('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
+STRIPE_API_VERSION = env('STRIPE_API_VERSION')
 
-STRIPE_WEBHOOK_SECRET = 'whsec_ccde6555031bcbac9764126d65d9fc87ee4de9f821ab0f8db97880b10a359e0a'
+STRIPE_WEBHOOK_SECRET = env('STRIPE_WEBHOOK_SECRET')
