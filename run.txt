@@ -27,3 +27,6 @@ python manage.py loaddata subjects.json
 python manage.py graph_models -a -o courses/graph/models.png
 
 pkill -f runserver
+
+# Redis via Docker or pypi
+
