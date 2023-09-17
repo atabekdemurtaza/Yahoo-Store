@@ -1,10 +1,22 @@
 from django.db import models
 from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
+
+
+LANGUAGES = [
+    ('en', _('English')),
+    ('es', _('Spanish'))
+]
 
 
 class Category(models.Model):
-    name = models.CharField('Название', max_length=255)
-    slug = models.SlugField('Слаг', max_length=255, unique=True)
+    name = models.CharField(
+        _('Название'),
+        max_length=255,
+        blank=True,
+        null=True
+    ),
+    slug = models.SlugField(_('Слаг'), max_length=255, unique=True)
 
     class Meta:
         verbose_name_plural = 'Категории'

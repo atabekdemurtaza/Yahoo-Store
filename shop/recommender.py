@@ -30,7 +30,7 @@ class Recommender:
                     )
 
     def suggest_product_for(self, products, max_results=6):
-        product_ids = [int(id) for id in products]
+        product_ids = [p.id for p in products]
         if len(products) == 1:
             # Если только 1 товар
             suggestions = r.zrange(
@@ -60,7 +60,7 @@ class Recommender:
             )[:max_results]
             # Удаляем временный ключ
             r.delete(tmp_key)
-        suggested_products_ids = [int(id) for id in products]
+        suggested_products_ids = [p.id for p in products]
         suggested_products = list(Product.objects.filter(
             id__in=suggested_products_ids
         ))

@@ -40,12 +40,15 @@ INSTALLED_APPS = [
     'orders',
     'payment',
     'django_extensions',
-    'coupons'
+    'coupons',
+    'rosetta',
+    'parler',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -112,11 +115,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Tashkent'
 
-USE_I18N = True
+USE_I18N = True   # Интернационализация
+USE_I10N = True  # Локализация
 
 USE_TZ = True
 
@@ -149,3 +153,24 @@ STRIPE_WEBHOOK_SECRET = env('STRIPE_WEBHOOK_SECRET')
 REDIS_HOST = env('REDIS_HOST')
 REDIS_PORT = env('REDIS_PORT')
 REDIS_DB = env('REDIS_DB')
+
+LANGUAGES = [
+    ('en', 'English'),
+    ('es', 'Spanish'),
+    ('ru', 'Russian')
+]
+
+LOCAL_PATH = [
+    BASE_DIR / 'locale'
+]
+
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'en', },
+        {'code': 'es', },
+    ),
+    'default': {
+        'fallbacks': 'en',          # defaults to PARLER_DEFAULT_LANGUAGE_CODE
+        'hide_untranslated': False,   # the default; let .active_translations() return fallbacks too.
+    }
+}
